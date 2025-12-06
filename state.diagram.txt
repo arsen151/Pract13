@@ -1,0 +1,17 @@
+@startuml
+[*] --> Idle
+
+Idle --> CarSelected : выбор автомобиля
+CarSelected --> OrderConfirmed : подтвердить заказ
+CarSelected --> TripCancelled : отмена
+
+OrderConfirmed --> CarArrived : автомобиль прибыл
+OrderConfirmed --> TripCancelled : отмена
+
+CarArrived --> InTrip : начать поездку
+
+InTrip --> TripCompleted : поездка завершена
+
+TripCompleted --> [*]
+TripCancelled --> Idle
+@enduml

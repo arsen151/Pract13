@@ -1,0 +1,24 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+
+actor "Гость" as Guest
+actor "Пользователь" as User
+actor "Администратор" as Admin
+
+User --|> Guest
+Admin --|> User
+
+rectangle "Система бронирования мероприятий" {
+
+  Guest -- (Просмотр мероприятий)
+
+  User -- (Бронирование мероприятия)
+  User -- (Отмена бронирования)
+
+  (Бронирование мероприятия) .> (Просмотр мероприятий) : <<include>>
+
+  Admin -- (Управление мероприятиями)
+  Admin -- (Просмотр всех бронирований)
+}
+@enduml
